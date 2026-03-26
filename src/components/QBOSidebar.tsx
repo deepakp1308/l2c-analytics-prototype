@@ -18,7 +18,7 @@ const secondaryNav = [
   { label: "Taxes", icon: "taxes" },
 ];
 
-function Icon({ name, size = 18, color = "#8B95A5" }: { name: string; size?: number; color?: string }) {
+function Icon({ name, size = 18, color = "#8C9BA5" }: { name: string; size?: number; color?: string }) {
   const s = { width: size, height: size, viewBox: "0 0 24 24", fill: "none", stroke: color, strokeWidth: 2, strokeLinecap: "round" as const, strokeLinejoin: "round" as const };
   switch (name) {
     case "dashboard": return <svg {...s}><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>;
@@ -39,9 +39,9 @@ export function QBOSidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-[56px] hover:w-[220px] group bg-[#1B2533] h-screen flex flex-col transition-all duration-200 overflow-hidden shrink-0 z-30">
-      {/* Logo */}
-      <div className="px-3 flex items-center gap-2.5 h-[52px] border-b border-white/8 shrink-0">
+    <aside className="w-[56px] hover:w-[220px] group bg-[#0D333F] h-screen flex flex-col transition-all duration-200 overflow-hidden shrink-0 z-30">
+      {/* QB Logo */}
+      <div className="px-3 flex items-center gap-2.5 h-[52px] border-b border-white/10 shrink-0">
         <div className="w-8 h-8 rounded-lg bg-[#2CA01C] flex items-center justify-center shrink-0">
           <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
             <path d="M6.5 11L2 6.5L3.41 5.09L6.5 8.17L14.59 0.09L16 1.5L6.5 11Z" fill="white"/>
@@ -63,12 +63,12 @@ export function QBOSidebar() {
                 href={item.href}
                 className={`flex items-center gap-3 px-3 py-2.5 rounded-lg transition-all duration-150 ${
                   active
-                    ? "bg-[#2CA01C] text-white"
-                    : "text-[#8B95A5] hover:bg-[#253447] hover:text-[#C8CDD5]"
+                    ? "bg-[#055393] text-white"
+                    : "text-[#8C9BA5] hover:bg-[#164050] hover:text-[#C8D5DB]"
                 }`}
               >
                 <div className="shrink-0 w-5 flex items-center justify-center">
-                  <Icon name={item.icon} size={18} color={active ? "#FFFFFF" : "#8B95A5"} />
+                  <Icon name={item.icon} size={18} color={active ? "#FFFFFF" : "#8C9BA5"} />
                 </div>
                 <span className="text-[13px] font-medium whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                   {item.label}
@@ -78,16 +78,16 @@ export function QBOSidebar() {
           })}
         </div>
 
-        <div className="h-px bg-white/8 mx-3 my-3" />
+        <div className="h-px bg-white/10 mx-3 my-3" />
 
         <div className="space-y-0.5 px-1.5">
           {secondaryNav.map((item) => (
             <div
               key={item.label}
-              className="flex items-center gap-3 px-3 py-2 rounded-lg text-[#5E6B7B] hover:bg-[#253447] hover:text-[#8B95A5] cursor-default transition-all duration-150"
+              className="flex items-center gap-3 px-3 py-2 rounded-lg text-[#5D686F] hover:bg-[#164050] hover:text-[#8C9BA5] cursor-default transition-all duration-150"
             >
               <div className="shrink-0 w-5 flex items-center justify-center">
-                <Icon name={item.icon} size={16} color="#5E6B7B" />
+                <Icon name={item.icon} size={16} color="#5D686F" />
               </div>
               <span className="text-[12px] whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                 {item.label}
@@ -98,8 +98,8 @@ export function QBOSidebar() {
       </nav>
 
       {/* Help */}
-      <div className="px-3 py-3 border-t border-white/8">
-        <div className="flex items-center gap-3 px-1.5 text-[#5E6B7B]">
+      <div className="px-3 py-3 border-t border-white/10">
+        <div className="flex items-center gap-3 px-1.5 text-[#5D686F]">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
             <circle cx="12" cy="12" r="10" /><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" /><line x1="12" y1="17" x2="12.01" y2="17" />
           </svg>

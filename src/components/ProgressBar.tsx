@@ -1,7 +1,7 @@
 export function ProgressBar({
   value,
   max = 100,
-  color = "#2CA01C",
+  color = "#055393",
   label,
   showValue = true,
 }: {
@@ -17,11 +17,11 @@ export function ProgressBar({
     <div>
       {label && (
         <div className="flex justify-between mb-1">
-          <span className="text-[11px] text-[#9CA3AF]">{label}</span>
-          {showValue && <span className="text-[11px] font-semibold text-[#212B36]">{Math.round(pct)}%</span>}
+          <span className="text-[11px] text-[#8C8C8C]">{label}</span>
+          {showValue && <span className="text-[11px] font-semibold text-[#0D333F]">{Math.round(pct)}%</span>}
         </div>
       )}
-      <div className="h-2 bg-[#E5E7EB] rounded-full overflow-hidden">
+      <div className="h-2 bg-[#D9D9D9] rounded-full overflow-hidden">
         <div className="h-full rounded-full transition-all duration-300" style={{ width: `${pct}%`, backgroundColor: color }} />
       </div>
     </div>

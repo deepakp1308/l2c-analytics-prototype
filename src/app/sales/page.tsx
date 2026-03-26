@@ -14,7 +14,7 @@ function Scene4_Pipeline() {
   return (
     <div className="space-y-5 fade-in">
       <IntuitAssistCard
-        title="Intuit Assist · Pipeline Pulse"
+        title="Intuit Intelligence · Pipeline Pulse"
         message={`Henderson ($32K) has been in "Proposal Sent" for 18 days — avg is 6. Park ($14K) cancelled twice. 30-day forecast: $62K vs $75K target (gap: $13K).\n\n➡ Follow up Henderson today; reschedule Park this week.`}
         actions={[{ label: "Follow Up Henderson", primary: true }, { label: "Reschedule Park" }]}
       />
@@ -28,25 +28,25 @@ function Scene4_Pipeline() {
 
       <div className="grid grid-cols-2 gap-4">
         <div className="qbo-card p-5">
-          <h3 className="text-[13px] font-semibold text-[#212B36] mb-4">Pipeline by Stage</h3>
+          <h3 className="text-[13px] font-semibold text-[#0D333F] mb-4">Pipeline by Stage</h3>
           <BarChart
             data={[
-              { label: "Discovery", value: 42000, color: "#0077C5" },
-              { label: "Proposal", value: 68000, color: "#2CA01C" },
-              { label: "Negotiation", value: 45000, color: "#E87040" },
+              { label: "Discovery", value: 42000, color: "#055393" },
+              { label: "Proposal", value: 68000, color: "#108000" },
+              { label: "Negotiation", value: 45000, color: "#E17000" },
               { label: "Closing", value: 32000, color: "#065F46" },
             ]}
             height={180}
           />
         </div>
         <div className="qbo-card p-5">
-          <h3 className="text-[13px] font-semibold text-[#212B36] mb-4">Win/Loss Analysis (90 Days)</h3>
+          <h3 className="text-[13px] font-semibold text-[#0D333F] mb-4">Win/Loss Analysis (90 Days)</h3>
           <DonutChart
             segments={[
-              { label: "Won", value: 14, color: "#2CA01C" },
+              { label: "Won", value: 14, color: "#108000" },
               { label: "No Decision", value: 8, color: "#D1D5DB" },
-              { label: "Competitor", value: 3, color: "#D13B3B" },
-              { label: "Budget", value: 2, color: "#E87040" },
+              { label: "Competitor", value: 3, color: "#D52B1E" },
+              { label: "Budget", value: 2, color: "#E17000" },
             ]}
             centerValue="14"
             centerLabel="Won"
@@ -55,7 +55,7 @@ function Scene4_Pipeline() {
       </div>
 
       <div className="qbo-card p-5">
-        <h3 className="text-[13px] font-semibold text-[#212B36] mb-3">Deals Needing Attention</h3>
+        <h3 className="text-[13px] font-semibold text-[#0D333F] mb-3">Deals Needing Attention</h3>
         <DataTable
           headers={["Deal", "Value", "Stage", "Days in Stage", "Avg", "Risk"]}
           rows={[
@@ -68,12 +68,12 @@ function Scene4_Pipeline() {
       </div>
 
       <div className="qbo-card p-5">
-        <h3 className="text-[13px] font-semibold text-[#212B36] mb-4">Meeting Format → Deal Progression Rate</h3>
+        <h3 className="text-[13px] font-semibold text-[#0D333F] mb-4">Meeting Format → Deal Progression Rate</h3>
         <BarChart
           data={[
-            { label: "Video + Visit", value: 78, color: "#2CA01C" },
-            { label: "Video Only", value: 68, color: "#0077C5" },
-            { label: "Phone", value: 31, color: "#E87040" },
+            { label: "Video + Visit", value: 78, color: "#108000" },
+            { label: "Video Only", value: 68, color: "#055393" },
+            { label: "Phone", value: 31, color: "#E17000" },
             { label: "Email", value: 12, color: "#D1D5DB" },
           ]}
           height={150}
@@ -81,7 +81,7 @@ function Scene4_Pipeline() {
       </div>
 
       <IntuitAssistCard
-        title="Intuit Assist · Calendar Filler"
+        title="Intuit Intelligence · Calendar Filler"
         message={`Video + site visit closes 2.4x faster. 3 early-stage deals need site visits. Park deal had 3 meetings, no progression — historically these don't close.\n\n➡ Schedule Thompson & Reyes visits. Consider close-or-kill for Park.`}
         actions={[{ label: "Schedule Visits", primary: true }, { label: "Switch to Video" }]}
       />
@@ -101,26 +101,26 @@ function Scene5_Proposals() {
 
       <div className="grid grid-cols-2 gap-4">
         <div className="qbo-card p-5">
-          <h3 className="text-[13px] font-semibold text-[#212B36] mb-4">Template Sign Rate</h3>
+          <h3 className="text-[13px] font-semibold text-[#0D333F] mb-4">Template Sign Rate</h3>
           <BarChart
             data={[
-              { label: "Premium", value: 54, color: "#2CA01C" },
-              { label: "Standard", value: 38, color: "#0077C5" },
+              { label: "Premium", value: 54, color: "#108000" },
+              { label: "Standard", value: 38, color: "#055393" },
               { label: "Basic", value: 29, color: "#D1D5DB" },
             ]}
             height={150}
           />
-          <p className="text-[10px] text-[#9CA3AF] mt-2 text-center">Sign rate %</p>
+          <p className="text-[10px] text-[#8C8C8C] mt-2 text-center">Sign rate %</p>
         </div>
         <div className="qbo-card p-5">
-          <h3 className="text-[13px] font-semibold text-[#212B36] mb-4">Days to Sign by Send Day</h3>
+          <h3 className="text-[13px] font-semibold text-[#0D333F] mb-4">Days to Sign by Send Day</h3>
           <BarChart
             data={[
               { label: "Mon", value: 6, color: "#D1D5DB" },
-              { label: "Tue", value: 3, color: "#2CA01C" },
-              { label: "Wed", value: 3.5, color: "#2CA01C" },
-              { label: "Thu", value: 5, color: "#0077C5" },
-              { label: "Fri", value: 8, color: "#E87040" },
+              { label: "Tue", value: 3, color: "#108000" },
+              { label: "Wed", value: 3.5, color: "#108000" },
+              { label: "Thu", value: 5, color: "#055393" },
+              { label: "Fri", value: 8, color: "#E17000" },
             ]}
             height={150}
           />
@@ -128,7 +128,7 @@ function Scene5_Proposals() {
       </div>
 
       <div className="qbo-card p-5">
-        <h3 className="text-[13px] font-semibold text-[#212B36] mb-3">Active Proposals</h3>
+        <h3 className="text-[13px] font-semibold text-[#0D333F] mb-3">Active Proposals</h3>
         <DataTable
           headers={["Proposal", "Value", "Template", "Sent", "Views", "Status"]}
           rows={[
@@ -140,7 +140,7 @@ function Scene5_Proposals() {
       </div>
 
       <IntuitAssistCard
-        title="Intuit Assist · Quote Whisperer"
+        title="Intuit Intelligence · Quote Whisperer"
         message={`Use Premium Package — 1.9x better for $20K+ projects. Send today (Tuesday) for fastest sign time. Henderson was viewed 3x yesterday but unsigned — they're comparing options.\n\n➡ Follow up on Henderson with a limited-time incentive.`}
         actions={[{ label: "Send Premium Proposal", primary: true }, { label: "Follow Up Henderson" }]}
       />
@@ -159,17 +159,17 @@ function Scene6_ContractToCash() {
       </div>
 
       <div className="qbo-card p-5">
-        <h3 className="text-[13px] font-semibold text-[#212B36] mb-4">Contract-to-Cash Pipeline</h3>
+        <h3 className="text-[13px] font-semibold text-[#0D333F] mb-4">Contract-to-Cash Pipeline</h3>
         <div className="space-y-3">
           {[
-            { stage: "Signed", count: 3, value: "$64,000", color: "#0077C5", pct: 100 },
-            { stage: "Invoiced", count: 2, value: "$32,000", color: "#2CA01C", pct: 50 },
+            { stage: "Signed", count: 3, value: "$64,000", color: "#055393", pct: 100 },
+            { stage: "Invoiced", count: 2, value: "$32,000", color: "#108000", pct: 50 },
             { stage: "Paid", count: 1, value: "$14,000", color: "#065F46", pct: 22 },
           ].map((s) => (
             <div key={s.stage}>
               <div className="flex justify-between mb-1">
-                <span className="text-[12px] font-medium text-[#212B36]">{s.stage}</span>
-                <span className="text-[11px] text-[#9CA3AF]">{s.count} deals · {s.value}</span>
+                <span className="text-[12px] font-medium text-[#0D333F]">{s.stage}</span>
+                <span className="text-[11px] text-[#8C8C8C]">{s.count} deals · {s.value}</span>
               </div>
               <ProgressBar value={s.pct} color={s.color} />
             </div>
@@ -178,7 +178,7 @@ function Scene6_ContractToCash() {
       </div>
 
       <div className="qbo-card p-5">
-        <h3 className="text-[13px] font-semibold text-[#212B36] mb-3">Post-Signature Deals</h3>
+        <h3 className="text-[13px] font-semibold text-[#0D333F] mb-3">Post-Signature Deals</h3>
         <DataTable
           headers={["Deal", "Value", "Signed", "Invoiced", "Paid", "Action"]}
           rows={[
@@ -191,19 +191,19 @@ function Scene6_ContractToCash() {
 
       <div className="flex gap-0 qbo-card overflow-hidden">
         {[
-          { label: "Signed → Invoiced", value: "11 days", color: "#0077C5" },
-          { label: "Invoiced → Paid", value: "22 days", color: "#E87040" },
+          { label: "Signed → Invoiced", value: "11 days", color: "#055393" },
+          { label: "Invoiced → Paid", value: "22 days", color: "#E17000" },
           { label: "Total Cycle", value: "33 days", color: "#065F46" },
         ].map((s, i) => (
-          <div key={i} className="flex-1 text-center p-4 border-r border-[#E5E7EB] last:border-r-0">
+          <div key={i} className="flex-1 text-center p-4 border-r border-[#BABEC5] last:border-r-0">
             <p className="text-lg font-bold" style={{ color: s.color }}>{s.value}</p>
-            <p className="text-[10px] text-[#9CA3AF]">{s.label}</p>
+            <p className="text-[10px] text-[#8C8C8C]">{s.label}</p>
           </div>
         ))}
       </div>
 
       <IntuitAssistCard
-        title="Intuit Assist · Cash Accelerator"
+        title="Intuit Intelligence · Cash Accelerator"
         message={`Signed-to-invoice gap averages 11 days — that's 11 days of cash left on the table every deal. Henderson was just signed for $32K.\n\n➡ Send the deposit invoice now. Reducing this gap to 2 days = $18,000/yr faster collections.`}
         actions={[{ label: "Generate Invoice", primary: true }, { label: "Set Auto-Invoice" }]}
       />
@@ -233,12 +233,12 @@ function SalesInner() {
     <div className="p-6 max-w-[1200px] mx-auto">
       <div className="flex items-center justify-between mb-5">
         <div>
-          <h1 className="text-[20px] font-semibold text-[#212B36]">Sales</h1>
-          <p className="text-[12px] text-[#9CA3AF] mt-0.5">
+          <h1 className="text-[20px] font-semibold text-[#0D333F]">Sales</h1>
+          <p className="text-[12px] text-[#8C8C8C] mt-0.5">
             {tabs.find((t) => t.id === currentScene)?.label || "Pipeline"}
           </p>
         </div>
-        <select className="text-[12px] border border-[#E5E7EB] rounded-md px-3 py-1.5 bg-white text-[#6B7280]">
+        <select className="text-[12px] border border-[#BABEC5] rounded-md px-3 py-1.5 bg-white text-[#6B6C72]">
           <option>This Quarter</option>
           <option>Last 30 Days</option>
         </select>

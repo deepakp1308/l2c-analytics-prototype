@@ -6,11 +6,11 @@ export function StatusBadge({
   variant?: "success" | "warning" | "danger" | "info" | "default";
 }) {
   const colors = {
-    success: "bg-[#E4F7E4] text-[#0D6B3F]",
-    warning: "bg-[#FFF7ED] text-[#B45309]",
-    danger: "bg-[#FEF2F2] text-[#D13B3B]",
-    info: "bg-[#E6F3FB] text-[#0077C5]",
-    default: "bg-[#F4F5F8] text-[#6B7280]",
+    success: "bg-[#F0FAF0] text-[#108000]",
+    warning: "bg-[#FFF7ED] text-[#E17000]",
+    danger: "bg-[#FEF2F2] text-[#D52B1E]",
+    info: "bg-[#EAF6F7] text-[#055393]",
+    default: "bg-[#F4F4EF] text-[#6B6C72]",
   };
 
   return (

@@ -1,68 +1,75 @@
 @import "tailwindcss";
 
 /* ═══════════════════════════════════════════
-   QBO Design Token System — FY27 Target State
+   QBO Fusion Design Tokens
+   Source: design.intuit.com/quickbooks/brand/design-foundations/color/
    ═══════════════════════════════════════════ */
 :root {
-  /* ── Brand ── */
-  --qbo-green: #2CA01C;
-  --qbo-green-hover: #1A8A0A;
-  --qbo-green-light: #E4F7E4;
-  --qbo-green-bg: #F0FAF0;
-  --qbo-blue: #0077C5;
-  --qbo-blue-hover: #005FA3;
-  --qbo-blue-light: #E6F3FB;
+  /* ── Brand (Logo Only) ── */
+  --qbo-logo-green: #2CA01C;
+
+  /* ── Primary Blues ── */
+  --qbo-blue: #055393;
+  --qbo-blue-hover: #044578;
+  --qbo-blue-secondary: #0077C5;
+  --qbo-blue-light: #DBEDEE;
 
   /* ── Surfaces ── */
-  --qbo-sidebar: #1B2533;
-  --qbo-sidebar-hover: #253447;
-  --qbo-sidebar-active: #2CA01C;
-  --qbo-bg: #F4F5F8;
+  --qbo-sidebar: #0D333F;
+  --qbo-sidebar-hover: #164050;
+  --qbo-sidebar-active: #055393;
+  --qbo-bg: #F4F4EF;
+  --qbo-bg-alt: #F3F2EF;
   --qbo-card: #FFFFFF;
-  --qbo-topbar: #FFFFFF;
+  --qbo-ice: #EAF6F7;
+  --qbo-teal-light: #BEE3E7;
+  --qbo-fig: #14324F;
 
   /* ── Text ── */
-  --qbo-text-primary: #212B36;
-  --qbo-text-secondary: #6B7280;
-  --qbo-text-muted: #9CA3AF;
+  --qbo-text-primary: #000000;
+  --qbo-text-heading: #0D333F;
+  --qbo-text-secondary: #6B6C72;
+  --qbo-text-muted: #8C8C8C;
   --qbo-text-inverse: #FFFFFF;
 
   /* ── Borders & Dividers ── */
-  --qbo-border: #E5E7EB;
-  --qbo-border-strong: #D1D5DB;
-  --qbo-divider: #F0F0F0;
+  --qbo-border: #BABEC5;
+  --qbo-border-light: #D9D9D9;
+  --qbo-divider: #E8E8E8;
+  --qbo-separator: #5D686F;
 
   /* ── Semantic ── */
-  --qbo-red: #D13B3B;
+  --qbo-red: #D52B1E;
   --qbo-red-light: #FEF2F2;
-  --qbo-orange: #E87040;
+  --qbo-orange: #E17000;
   --qbo-orange-light: #FFF7ED;
   --qbo-yellow: #F5A623;
-  --qbo-purple: #6C5CE7;
-  --qbo-teal: #00B9A9;
+  --qbo-green-success: #108000;
+  --qbo-green-light: #F0FAF0;
 
   /* ── Chart Palette ── */
-  --chart-navy: #1E3A6E;
-  --chart-blue: #4472C4;
-  --chart-teal: #00B9A9;
-  --chart-pink: #F4809B;
-  --chart-green: #2CA01C;
-  --chart-orange: #E87040;
-  --chart-red: #D13B3B;
-  --chart-gray: #D1D5DB;
-  --chart-purple: #6C5CE7;
+  --chart-navy: #0D333F;
+  --chart-blue: #055393;
+  --chart-blue-mid: #0077C5;
+  --chart-teal: #0097A9;
+  --chart-green: #108000;
+  --chart-orange: #E17000;
+  --chart-red: #D52B1E;
+  --chart-gray: #BABEC5;
 
-  /* ── Intuit Assist ── */
-  --assist-from: #6C5CE7;
-  --assist-to: #A855F7;
-  --assist-bg: #F5F3FF;
-  --assist-border: rgba(108, 92, 231, 0.15);
+  /* ── Intuit Intelligence (QBO Blue branding, not purple) ── */
+  --ii-primary: #055393;
+  --ii-secondary: #0077C5;
+  --ii-bg: #EAF6F7;
+  --ii-border: rgba(5, 83, 147, 0.15);
+  --ii-gradient-from: #055393;
+  --ii-gradient-to: #0097A9;
 
   /* ── Shadows ── */
-  --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-sm: 0 1px 4px rgba(26,40,96,0.08);
-  --shadow-md: 0 4px 12px rgba(26,40,96,0.1);
-  --shadow-lg: 0 8px 24px rgba(26,40,96,0.12);
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.05);
+  --shadow-sm: 0 1px 4px rgba(13,51,63,0.08);
+  --shadow-md: 0 4px 12px rgba(13,51,63,0.1);
+  --shadow-lg: 0 8px 24px rgba(13,51,63,0.12);
 
   /* ── Radius ── */
   --radius-sm: 4px;
@@ -87,7 +94,7 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: 'Avenir Next', 'Avenir', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: 'AvenirNext forINTUIT', 'Avenir Next', 'Avenir', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   font-size: 14px;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -96,8 +103,8 @@ body {
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
-::-webkit-scrollbar-thumb { background: #D1D5DB; border-radius: 3px; }
-::-webkit-scrollbar-thumb:hover { background: #9CA3AF; }
+::-webkit-scrollbar-thumb { background: #BABEC5; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #6B6C72; }
 
 /* ═══════════════════════════════════════════
    Animations
@@ -105,37 +112,27 @@ body {
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes slideUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
 @keyframes slideInRight { from { opacity: 0; transform: translateX(16px); } to { opacity: 1; transform: translateX(0); } }
-@keyframes pulseGlow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(108, 92, 231, 0.15); }
-  50% { box-shadow: 0 0 12px 4px rgba(108, 92, 231, 0.1); }
-}
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+@keyframes iiPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(5, 83, 147, 0.12); }
+  50% { box-shadow: 0 0 10px 3px rgba(5, 83, 147, 0.08); }
 }
 
 .fade-in { animation: fadeIn 0.3s ease-out; }
 .slide-up { animation: slideUp 0.4s ease-out forwards; }
 .slide-in-right { animation: slideInRight 0.3s ease-out; }
-.assist-glow { animation: pulseGlow 3s ease-in-out infinite; }
+.ii-pulse { animation: iiPulse 3s ease-in-out infinite; }
 
 /* ═══════════════════════════════════════════
-   Intuit Assist Utilities
+   Intuit Intelligence Utilities
    ═══════════════════════════════════════════ */
-.intuit-assist-gradient {
-  background: linear-gradient(135deg, var(--assist-from), var(--assist-to));
+.ii-gradient {
+  background: linear-gradient(135deg, var(--ii-gradient-from), var(--ii-gradient-to));
 }
-.intuit-assist-text {
-  background: linear-gradient(135deg, var(--assist-from), var(--assist-to));
+.ii-text {
+  background: linear-gradient(135deg, var(--ii-gradient-from), var(--ii-gradient-to));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-}
-.intuit-assist-border {
-  border: 1px solid var(--assist-border);
-  background: linear-gradient(white, white) padding-box,
-              linear-gradient(135deg, var(--assist-from), var(--assist-to)) border-box;
-  border: 1px solid transparent;
 }
 
 /* ═══════════════════════════════════════════
@@ -143,15 +140,9 @@ body {
    ═══════════════════════════════════════════ */
 .qbo-card {
   background: var(--qbo-card);
-  border: 1px solid var(--qbo-border);
+  border: 1px solid var(--qbo-border-light);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-xs);
-}
-.qbo-card-elevated {
-  background: var(--qbo-card);
-  border: 1px solid var(--qbo-border);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-sm);
 }
 
 /* ═══════════════════════════════════════════
