@@ -11,73 +11,105 @@ import { IntuitAssistCard } from "@/components/IntuitAssistCard";
 import { StatusBadge } from "@/components/StatusBadge";
 import { ProgressBar } from "@/components/ProgressBar";
 import { SceneTabs } from "@/components/SceneTabs";
+import { DateRangeSelector } from "@/components/DateRangeSelector";
+import { MetricWell } from "@/components/MetricWell";
+import { TimeSeriesChart } from "@/components/TimeSeriesChart";
+import { AutomatedCampaignChart } from "@/components/AutomatedCampaignChart";
+import { ChannelROITable } from "@/components/ChannelROITable";
+
+/* ── Metric data sets for the Data Well ── */
+const BUSINESS_SETS = [
+  { label: "Revenue Focus", metrics: [
+    { label: "Campaign Revenue", value: "$142.6K", change: "+18% vs 30d", changeType: "positive" as const },
+    { label: "Overall ROI", value: "4.2x", change: "+0.8x", changeType: "positive" as const },
+    { label: "Net Profit", value: "$38,400", change: "+12%", changeType: "positive" as const },
+    { label: "Customer LTV", value: "$8,240", change: "+6%", changeType: "positive" as const },
+  ]},
+  { label: "Deal Focus", metrics: [
+    { label: "Avg Deal Size", value: "$31K", change: "+8%", changeType: "positive" as const },
+    { label: "Gross Margin", value: "27%", change: "+2pp", changeType: "positive" as const },
+    { label: "Revenue per Lead", value: "$2,264", change: "+14%", changeType: "positive" as const },
+    { label: "Repeat Purchase", value: "34%", change: "-2pp", changeType: "negative" as const },
+  ]},
+];
+const CAMPAIGN_SETS = [
+  { label: "Core Metrics", metrics: [
+    { label: "Impressions", value: "48.2K", change: "+22%", changeType: "positive" as const },
+    { label: "Clicks", value: "2,140", change: "+15%", changeType: "positive" as const },
+    { label: "CTR", value: "4.4%", change: "+0.3pp", changeType: "positive" as const },
+    { label: "CPL", value: "$22", change: "-8%", changeType: "positive" as const },
+  ]},
+  { label: "Spend & Engagement", metrics: [
+    { label: "CPC", value: "$1.84", change: "-5%", changeType: "positive" as const },
+    { label: "Total Spend", value: "$4,200", change: "+10%", changeType: "negative" as const },
+    { label: "Bounce Rate", value: "42%", change: "-3pp", changeType: "positive" as const },
+    { label: "Engagement", value: "6.8%", change: "+1.2pp", changeType: "positive" as const },
+  ]},
+];
+const FUNNEL_SETS = [
+  { label: "Conversion Path", metrics: [
+    { label: "Total Leads", value: "63", change: "+12", changeType: "positive" as const },
+    { label: "MQLs", value: "41", change: "+8", changeType: "positive" as const },
+    { label: "SQLs", value: "18", change: "+3", changeType: "positive" as const },
+    { label: "Conv Rate", value: "15.2%", change: "+2.1pp", changeType: "positive" as const },
+  ]},
+  { label: "Pipeline Value", metrics: [
+    { label: "Opportunities", value: "12", change: "+4", changeType: "positive" as const },
+    { label: "Won Deals", value: "5", change: "+2", changeType: "positive" as const },
+    { label: "Avg Days to Close", value: "14d", change: "-3d", changeType: "positive" as const },
+    { label: "Pipeline Value", value: "$62K", change: "+18%", changeType: "positive" as const },
+  ]},
+];
 
 /* ═══════════════════════════════════════
    Scene 1: Campaign & Audience Analytics
    ═══════════════════════════════════════ */
 function Scene1_CampaignROI() {
+  const [dateRange, setDateRange] = useState("last30");
+  const [botFilter, setBotFilter] = useState(true);
+  const [bizSet, setBizSet] = useState(0);
+  const [campSet, setCampSet] = useState(0);
+  const [funnelSet, setFunnelSet] = useState(0);
+  const [activeChannels, setActiveChannels] = useState<Record<string, boolean>>({
+    email: true, sms: true, whatsapp: true, googleAds: true, meta: true, tiktok: false, linkedin: false,
+  });
+  const [autoMetric, setAutoMetric] = useState("sendVolume");
+
   return (
     <div className="space-y-5 fade-in">
-      {/* AI insight banner */}
+      {/* AI Insight Banner */}
       <IntuitAssistCard
         title="Intuit Intelligence · Campaign Analyst"
-        message={`Your Meta ad produced $38,400 from 12 leads at $22 CPL — best channel this quarter. SMS generated 47 clicks but 0 conversions.\n\n➡ Reallocate the $400/mo SMS budget to Meta (+30%). Predicted: 4–6 more qualified leads/month.`}
-        actions={[{ label: "Reallocate Budget", primary: true }, { label: "View Details" }]}
+        message={`Your Meta ad produced $38,400 from 12 leads at $22 CPL — best channel this quarter. WhatsApp has the highest ROI at 11.3x. SMS generated 47 clicks but 0 conversions.\n\n➡ Reallocate $400/mo SMS budget to Meta (+30%). Shift WhatsApp from manual to automated flows.`}
+        actions={[{ label: "Reallocate Budget", primary: true }, { label: "View Full Analysis" }]}
       />
 
-      <div className="grid grid-cols-4 gap-4">
-        <MetricCard label="Campaign Revenue" value="$38,400" change="+18% QoQ" changeType="positive" />
-        <MetricCard label="Best CPL" value="$22" subtitle="Meta Ads" change="vs $48 Google" changeType="positive" />
-        <MetricCard label="Total Leads" value="63" change="+12 this month" changeType="positive" />
-        <MetricCard label="Avg Response Time" value="19h" change="Target: <2h" changeType="negative" />
+      {/* Section 1: Date Range + Bot Filter */}
+      <DateRangeSelector dateRange={dateRange} onDateRangeChange={setDateRange} botFilterEnabled={botFilter} onBotFilterToggle={setBotFilter} />
+
+      {/* Section 2: Data Well — 3-Tier Metrics */}
+      <div className="qbo-card p-5 space-y-4">
+        <MetricWell title="Business Outcome Metrics" metricSets={BUSINESS_SETS} activeSet={bizSet} onSetChange={setBizSet} />
+        <div className="border-b border-[#E8E8E8]" />
+        <MetricWell title="Campaign Performance Metrics" metricSets={CAMPAIGN_SETS} activeSet={campSet} onSetChange={setCampSet} />
+        <div className="border-b border-[#E8E8E8]" />
+        <MetricWell title="Lead Funnel Metrics" metricSets={FUNNEL_SETS} activeSet={funnelSet} onSetChange={setFunnelSet} />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        <div className="qbo-card p-5">
-          <h3 className="text-[13px] font-semibold text-[#0D333F] mb-4">Revenue per $1 Spent by Channel</h3>
-          <BarChart
-            data={[
-              { label: "Meta Ads", value: 4.8, color: "#1877F2" },
-              { label: "Google", value: 3.2, color: "#EA4335" },
-              { label: "Email", value: 2.1, color: "#108000" },
-              { label: "SMS", value: 0, color: "#D1D5DB" },
-            ]}
-            height={180}
-          />
-        </div>
-        <div className="qbo-card p-5">
-          <h3 className="text-[13px] font-semibold text-[#0D333F] mb-4">Response Time vs Conversion</h3>
-          <BarChart
-            data={[
-              { label: "< 2h", value: 34, color: "#108000" },
-              { label: "2–6h", value: 22, color: "#055393" },
-              { label: "6–24h", value: 11, color: "#E17000" },
-              { label: "> 24h", value: 5, color: "#D52B1E" },
-            ]}
-            height={180}
-          />
-          <p className="text-[10px] text-[#8C8C8C] mt-2 text-center">Conversion rate %</p>
-        </div>
-      </div>
+      {/* Section 3: Time Series — Multi-Channel */}
+      <TimeSeriesChart
+        activeChannels={activeChannels}
+        onToggleChannel={(k) => setActiveChannels(prev => ({ ...prev, [k]: !prev[k] }))}
+      />
 
+      {/* Section 4: Automated Campaign Performance */}
+      <AutomatedCampaignChart activeMetric={autoMetric} onMetricChange={setAutoMetric} />
+
+      {/* Section 5: Channel ROI Table */}
       <div className="qbo-card p-5">
-        <h3 className="text-[13px] font-semibold text-[#0D333F] mb-3">Campaign Performance — All Channels</h3>
-        <DataTable
-          headers={["Channel", "Leads", "CPL", "Revenue", "Conv Rate", "Status"]}
-          rows={[
-            ["Meta Homeowner Ad", "12", "$22", "$38,400", "34%", <StatusBadge key="s1" status="Top Performer" variant="success" />],
-            ["Google Ads", "6", "$48", "$28,600", "22%", <StatusBadge key="s2" status="High Value" variant="info" />],
-            ["Email Newsletter", "8", "$12", "$8,200", "18%", <StatusBadge key="s3" status="Steady" variant="info" />],
-            ["SMS Spring Promo", "0", "$8", "$0", "0%", <StatusBadge key="s4" status="No Conversions" variant="danger" />],
-          ]}
-        />
+        <h3 className="text-[13px] font-semibold text-[#0D333F] mb-3">Channel ROI Comparison</h3>
+        <ChannelROITable />
       </div>
-
-      <IntuitAssistCard
-        title="Intuit Intelligence · Speed Coach"
-        message={`Average lead response time: 19 hours. Leads contacted within 2 hours convert at 34% vs 11% next-day. You have 4 uncontacted leads from the past 48 hours.\n\n➡ Contact these leads now — prioritized by score.`}
-        actions={[{ label: "Contact Top Leads", primary: true }, { label: "Set Auto-Response" }]}
-      />
     </div>
   );
 }
