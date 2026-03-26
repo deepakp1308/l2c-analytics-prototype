@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { MetricCard } from "@/components/MetricCard";
 import { BarChart } from "@/components/BarChart";
@@ -161,7 +161,7 @@ function Scene8_Payments() {
   );
 }
 
-export default function CashFlowPage() {
+function CashFlowInner() {
   const searchParams = useSearchParams();
   const [activeScene, setActiveScene] = useState(7);
 
@@ -211,4 +211,8 @@ export default function CashFlowPage() {
       <SceneTabs active={activeScene} onChange={setActiveScene} />
     </div>
   );
+}
+
+export default function CashFlowPage() {
+  return <Suspense><CashFlowInner /></Suspense>;
 }

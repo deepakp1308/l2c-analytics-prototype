@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { MetricCard } from "@/components/MetricCard";
 import { BarChart } from "@/components/BarChart";
@@ -211,7 +211,7 @@ function Scene6_ContractToCash() {
   );
 }
 
-export default function SalesPage() {
+function SalesInner() {
   const searchParams = useSearchParams();
   const [activeScene, setActiveScene] = useState(4);
 
@@ -263,4 +263,8 @@ export default function SalesPage() {
       <SceneTabs active={activeScene} onChange={setActiveScene} />
     </div>
   );
+}
+
+export default function SalesPage() {
+  return <Suspense><SalesInner /></Suspense>;
 }

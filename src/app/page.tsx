@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { MetricCard } from "@/components/MetricCard";
 import { BarChart } from "@/components/BarChart";
@@ -293,7 +293,7 @@ function Scene9_L2CFunnel() {
 /* ═══════════════════════════════════════
    Dashboard Page Shell
    ═══════════════════════════════════════ */
-export default function DashboardPage() {
+function DashboardInner() {
   const searchParams = useSearchParams();
   const [activeScene, setActiveScene] = useState(1);
 
@@ -314,7 +314,6 @@ export default function DashboardPage() {
 
   return (
     <div className="p-6 max-w-[1200px] mx-auto">
-      {/* Page Header */}
       <div className="flex items-center justify-between mb-5">
         <div>
           <h1 className="text-[20px] font-semibold text-[#212B36]">Dashboard</h1>
@@ -329,7 +328,6 @@ export default function DashboardPage() {
         </select>
       </div>
 
-      {/* Sub-tabs */}
       <div className="flex gap-1 mb-6 bg-[#ECEEF2] rounded-lg p-1 w-fit">
         {tabs.map((tab) => (
           <button
@@ -342,7 +340,6 @@ export default function DashboardPage() {
         ))}
       </div>
 
-      {/* Scene Content */}
       {currentScene === 1 && <Scene1_CampaignROI />}
       {currentScene === 2 && <Scene2_Attribution />}
       {currentScene === 3 && <Scene3_LeadFunnel />}
@@ -351,4 +348,8 @@ export default function DashboardPage() {
       <SceneTabs active={activeScene} onChange={setActiveScene} />
     </div>
   );
+}
+
+export default function DashboardPage() {
+  return <Suspense><DashboardInner /></Suspense>;
 }
