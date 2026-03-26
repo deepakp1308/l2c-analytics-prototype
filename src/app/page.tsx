@@ -16,6 +16,7 @@ import { MetricWell } from "@/components/MetricWell";
 import { TimeSeriesChart } from "@/components/TimeSeriesChart";
 import { AutomatedCampaignChart } from "@/components/AutomatedCampaignChart";
 import { ChannelROITable } from "@/components/ChannelROITable";
+import { AttributionFunnel } from "@/components/AttributionFunnel";
 
 /* ── Metric data sets for the Data Well ── */
 const BUSINESS_SETS = [
@@ -129,31 +130,7 @@ function Scene2_Attribution() {
 
       <div className="qbo-card p-5">
         <h3 className="text-[13px] font-semibold text-[#0D333F] mb-4">Ad-to-Cash Attribution — Ledger Verified</h3>
-        <div className="flex items-center justify-between gap-1 overflow-x-auto pb-2">
-          {[
-            { label: "Ad Impression", value: "2,840", color: "#93C5FD" },
-            { label: "Ad Click", value: "312", color: "#055393" },
-            { label: "Lead", value: "84", color: "#4A90D9" },
-            { label: "Proposal", value: "22", color: "#108000" },
-            { label: "Signed", value: "14", color: "#0D6B3F" },
-            { label: "Invoiced", value: "12", color: "#E17000" },
-            { label: "Cash Received", value: "$128.6K", color: "#065F46" },
-          ].map((s, i) => (
-            <div key={i} className="flex items-center gap-1 shrink-0">
-              <div className="text-center">
-                <div className="w-[72px] h-14 rounded-lg flex items-center justify-center" style={{ backgroundColor: s.color + "18" }}>
-                  <span className="text-[11px] font-bold" style={{ color: s.color }}>{s.value}</span>
-                </div>
-                <p className="text-[9px] text-[#8C8C8C] mt-1 leading-tight">{s.label}</p>
-              </div>
-              {i < 6 && <span className="text-[#D1D5DB] text-sm mx-0.5">→</span>}
-            </div>
-          ))}
-        </div>
-        <div className="mt-3 p-2.5 bg-[#F0FAF0] rounded-lg flex items-center gap-2">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="#108000"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" /></svg>
-          <p className="text-[11px] text-[#065F46] font-medium">$128,600 verified against QuickBooks General Ledger — to the penny</p>
-        </div>
+        <AttributionFunnel />
       </div>
 
       <div className="grid grid-cols-2 gap-4">
