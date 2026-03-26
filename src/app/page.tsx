@@ -222,9 +222,57 @@ function Scene3_LeadFunnel() {
 /* ═══════════════════════════════════════
    Scene 9: L2C End-to-End Intelligence
    ═══════════════════════════════════════ */
+function openIntelligencePanel(question: string) {
+  window.dispatchEvent(new CustomEvent("open-intuit-intelligence", { detail: question }));
+}
+
+const L2C_FOLLOWUP_CHIPS = [
+  "Which channel has the best conversion path?",
+  "Show pipeline forecast for next 30 days",
+  "Why is churn risk increasing?",
+  "What's driving the 62% funnel drop-off?",
+];
+
 function Scene9_L2CFunnel() {
   return (
     <div className="space-y-5 fade-in">
+      {/* Intuit Intelligence Banner + Follow-up Chips */}
+      <div className="qbo-card p-5" style={{ borderColor: "rgba(5,83,147,0.12)", boxShadow: "0 0 0 1px rgba(5,83,147,0.04), 0 2px 8px rgba(5,83,147,0.06)" }}>
+        <div className="flex items-start gap-3 mb-4">
+          <div className="w-8 h-8 rounded-lg ii-gradient flex items-center justify-center shrink-0 mt-0.5">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="white">
+              <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
+            </svg>
+          </div>
+          <div>
+            <h3 className="text-[13px] font-semibold ii-text uppercase tracking-wide">Intuit Intelligence · L2C Analyst</h3>
+            <p className="text-[14px] text-[#0D333F] leading-relaxed mt-1.5">
+              Your end-to-end conversion is <strong>3.6%</strong> (campaign → cash). The best-performing path converts at <strong>11.2%</strong> — 3.1x average.
+              You have <strong>$41K revenue at risk</strong> from 7 stale leads, and The Andersons (LTV: $112K) haven&apos;t engaged in 62 days.
+            </p>
+            <div className="flex gap-2 mt-3">
+              <button className="text-[12px] font-medium px-3 py-1.5 rounded-md ii-gradient text-white hover:opacity-90">View Full Analysis</button>
+              <button className="text-[12px] font-medium px-3 py-1.5 rounded-md border border-[#BABEC5] text-[#0D333F] hover:bg-[#F4F4EF]">Export Report</button>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-[#E8E8E8] pt-3">
+          <p className="text-[10px] font-semibold text-[#8C8C8C] uppercase tracking-wider mb-2">Ask Intuit Intelligence</p>
+          <div className="flex flex-wrap gap-2">
+            {L2C_FOLLOWUP_CHIPS.map((chip) => (
+              <button
+                key={chip}
+                onClick={() => openIntelligencePanel(chip)}
+                className="text-[12px] text-[#055393] px-3 py-1.5 rounded-full border border-[#055393]/20 bg-[#EAF6F7]/50 hover:bg-[#EAF6F7] hover:border-[#055393]/40 transition-all"
+              >
+                {chip}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
       <div className="grid grid-cols-4 gap-4">
         <MetricCard label="E2E Conversion" value="3.6%" subtitle="Campaign → Cash" />
         <MetricCard label="Best Path" value="11.2%" subtitle="Meta→Video→Premium" change="3.1x avg" changeType="positive" />
@@ -245,8 +293,8 @@ function Scene9_L2CFunnel() {
             { label: "Cash Collected", value: 10, color: "#9D174D", conversion: "83%" },
           ]}
         />
-        <div className="mt-3 p-2.5 bg-[#F5F3FF] rounded-lg">
-          <p className="text-[11px] text-[#6C5CE7] font-medium">End-to-end: 3.6% conversion · Ledger-verified at every stage</p>
+        <div className="mt-3 p-2.5 bg-[#EAF6F7] rounded-lg">
+          <p className="text-[11px] text-[#055393] font-medium">End-to-end: 3.6% conversion · Ledger-verified at every stage</p>
         </div>
       </div>
 
@@ -255,8 +303,8 @@ function Scene9_L2CFunnel() {
           <h3 className="text-[13px] font-semibold text-[#0D333F] mb-3">Customer Profile — The Andersons</h3>
           <div className="grid grid-cols-3 gap-3 mb-3">
             <div><p className="text-[10px] text-[#8C8C8C] uppercase">Revenue</p><p className="text-lg font-bold text-[#0D333F]">$67K</p></div>
-            <div><p className="text-[10px] text-[#8C8C8C] uppercase">Predicted LTV</p><p className="text-lg font-bold intuit-assist-text">$112K</p></div>
-            <div><p className="text-[10px] text-[#8C8C8C] uppercase">Engagement</p><p className="text-lg font-bold text-[#E87040]">Declining</p></div>
+            <div><p className="text-[10px] text-[#8C8C8C] uppercase">Predicted LTV</p><p className="text-lg font-bold ii-text">$112K</p></div>
+            <div><p className="text-[10px] text-[#8C8C8C] uppercase">Engagement</p><p className="text-lg font-bold text-[#E17000]">Declining</p></div>
           </div>
           <LineChart data={[{ label: "Aug", value: 12 }, { label: "Sep", value: 10 }, { label: "Oct", value: 8 }, { label: "Nov", value: 5 }, { label: "Dec", value: 3 }, { label: "Jan", value: 1 }]} color="#E17000" height={100} />
           <ProgressBar value={65} color="#E17000" label="Churn Risk" />
@@ -277,7 +325,7 @@ function Scene9_L2CFunnel() {
             ))}
           </div>
           <div className="flex gap-2 mt-3">
-            <button className="text-[12px] px-3 py-1.5 bg-[#2CA01C] text-white rounded-md font-medium">Schedule</button>
+            <button className="text-[12px] px-3 py-1.5 bg-[#055393] text-white rounded-md font-medium">Schedule</button>
             <button className="text-[12px] px-3 py-1.5 border border-[#BABEC5] rounded-md font-medium text-[#0D333F]">Export PDF</button>
           </div>
         </div>
@@ -304,7 +352,7 @@ function Scene9_L2CFunnel() {
    ═══════════════════════════════════════ */
 function DashboardInner() {
   const searchParams = useSearchParams();
-  const [activeScene, setActiveScene] = useState(1);
+  const [activeScene, setActiveScene] = useState(9);
 
   useEffect(() => {
     const s = searchParams.get("scene");
@@ -312,14 +360,14 @@ function DashboardInner() {
   }, [searchParams]);
 
   const tabs = [
-    { id: 1, label: "Campaign ROI" },
-    { id: 2, label: "Ad Attribution" },
-    { id: 3, label: "Lead Funnel" },
     { id: 9, label: "L2C Intelligence" },
+    { id: 3, label: "Lead Funnel" },
+    { id: 2, label: "Ad Attribution" },
+    { id: 1, label: "Campaign ROI" },
   ];
 
-  const dashboardScenes = [1, 2, 3, 9];
-  const currentScene = dashboardScenes.includes(activeScene) ? activeScene : 1;
+  const dashboardScenes = [9, 3, 2, 1];
+  const currentScene = dashboardScenes.includes(activeScene) ? activeScene : 9;
 
   return (
     <div className="p-6 max-w-[1200px] mx-auto">
