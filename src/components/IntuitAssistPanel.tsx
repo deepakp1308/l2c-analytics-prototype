@@ -66,6 +66,70 @@ const RESPONSES: Record<string, PanelContent> = {
     action: { label: "Contact Top 3 Leads", description: "Prioritized by score — $41K revenue at risk" },
     followUps: ["Show me the stale leads list", "What's the average response time?", "Set up stage alerts for me"],
   },
+  "Which campaign should I invest more in this month?": {
+    question: "Which campaign should I invest more in this month?",
+    answer: "Meta Ads has the best CPL ($22) and highest lead volume (12 this month). Google Ads is pricier ($48 CPL) but produces 1.7x larger deals. For this month, increase Meta by 30% — you'll gain 4-6 leads. Next month, test Google for premium services.",
+    chartType: "bar",
+    chartData: [
+      { label: "Meta", value: 4.8, color: "#1877F2" },
+      { label: "Google", value: 3.1, color: "#EA4335" },
+      { label: "Email", value: 6.8, color: "#055393" },
+      { label: "WhatsApp", value: 11.3, color: "#25D366" },
+    ],
+    action: { label: "Increase Meta Budget 30%", description: "Reallocate from SMS ($400/mo) to Meta Ads" },
+    followUps: ["What's my true cost to acquire a paying customer?", "Show pipeline forecast for next 30 days", "Are my ads attracting the right customer profile?"],
+  },
+  "Which leads should I call first today?": {
+    question: "Which leads should I call first today?",
+    answer: "You have 4 uncontacted leads from the past 48h. Jennifer Thompson (score: 92, est. $8.2K) is your top priority — she came from a web form and viewed your portfolio twice. Leads contacted within 2h convert at 34% vs 11% for next-day.",
+    chartType: "bar",
+    chartData: [
+      { label: "J. Thompson", value: 92, color: "#108000" },
+      { label: "R. Kim", value: 88, color: "#108000" },
+      { label: "A. Chen", value: 82, color: "#4A90D9" },
+      { label: "P. Davis", value: 71, color: "#E17000" },
+    ],
+    action: { label: "Call Jennifer Thompson", description: "Score 92 · Web Form · Est. $8,200 · 2 portfolio views" },
+    followUps: ["Why are qualified leads not converting to proposals?", "What's the average response time?", "Which deals are at risk of stalling this week?"],
+  },
+  "Which deals are at risk of stalling this week?": {
+    question: "Which deals are at risk of stalling this week?",
+    answer: "Henderson Kitchen ($32K) has been in Proposal for 18 days (avg: 6). Park Bathroom ($14K) cancelled 2 meetings. These two represent $46K in at-risk pipeline. Thompson ($28K) and Reyes ($22K) are progressing normally.",
+    chartType: "bar",
+    chartData: [
+      { label: "Henderson", value: 18, color: "#D52B1E" },
+      { label: "Park", value: 12, color: "#E17000" },
+      { label: "Thompson", value: 4, color: "#108000" },
+      { label: "Reyes", value: 3, color: "#108000" },
+    ],
+    action: { label: "Follow Up Henderson Today", description: "18 days stalled — send limited-time incentive" },
+    followUps: ["How do I close the $13K gap to hit my quarterly target?", "Show pipeline forecast for next 30 days", "Which channel has the best conversion path?"],
+  },
+  "Who owes me money and how do I get paid faster?": {
+    question: "Who owes me money and how do I get paid faster?",
+    answer: "3 clients owe you $14,100 total. Morrison ($6.2K, 38 days overdue) is chronically late — require 50% deposit next time. Cho ($3.8K) is usually on-time, likely an oversight. Switching to ACH saves 8 days on average vs checks.",
+    chartType: "bar",
+    chartData: [
+      { label: "Morrison", value: 6.2, color: "#D52B1E" },
+      { label: "Cho", value: 3.8, color: "#E17000" },
+      { label: "Patel", value: 4.1, color: "#E17000" },
+    ],
+    action: { label: "Send Payment Reminders", description: "Auto-send to Morrison and Cho with ACH link" },
+    followUps: ["What payment method should I default to save time?", "How much cash will I have in 30 days?", "Which customers are about to churn?"],
+  },
+  "Which customers are about to churn?": {
+    question: "Which customers are about to churn?",
+    answer: "The Andersons (LTV: $112K) are your highest churn risk — 62 days inactive with a 90-day re-engagement window. Seasonal data suggests an outdoor project. Two other top-10 clients (Park, Liu) show declining engagement but are still within normal range.",
+    chartType: "bar",
+    chartData: [
+      { label: "Andersons", value: 62, color: "#D52B1E" },
+      { label: "Park", value: 28, color: "#E17000" },
+      { label: "Liu", value: 21, color: "#E17000" },
+      { label: "Others", value: 8, color: "#108000" },
+    ],
+    action: { label: "Send Outreach to Andersons", description: "Personalized outdoor project proposal — seasonal timing" },
+    followUps: ["Who's ready for an upsell based on project history?", "What re-engagement worked before?", "What's my most profitable customer type?"],
+  },
 };
 
 const DEFAULT_FOLLOWUPS = [

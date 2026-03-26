@@ -17,6 +17,13 @@ import { TimeSeriesChart } from "@/components/TimeSeriesChart";
 import { AutomatedCampaignChart } from "@/components/AutomatedCampaignChart";
 import { ChannelROITable } from "@/components/ChannelROITable";
 import { AttributionFunnel } from "@/components/AttributionFunnel";
+import { L2CHealthScore } from "@/components/L2CHealthScore";
+import { RevenueVelocity } from "@/components/RevenueVelocity";
+import { CashConversion } from "@/components/CashConversion";
+import { StageExplorer } from "@/components/StageExplorer";
+import { CustomerHealth } from "@/components/CustomerHealth";
+import { WorkingCapital } from "@/components/WorkingCapital";
+import { RevenueLeakage } from "@/components/RevenueLeakage";
 
 /* ── Metric data sets for the Data Well ── */
 const BUSINESS_SETS = [
@@ -247,8 +254,8 @@ function Scene9_L2CFunnel() {
           <div>
             <h3 className="text-[13px] font-semibold ii-text uppercase tracking-wide">Intuit Intelligence · L2C Analyst</h3>
             <p className="text-[14px] text-[#0D333F] leading-relaxed mt-1.5">
-              Your end-to-end conversion is <strong>3.6%</strong> (campaign → cash). The best-performing path converts at <strong>11.2%</strong> — 3.1x average.
-              You have <strong>$41K revenue at risk</strong> from 7 stale leads, and The Andersons (LTV: $112K) haven&apos;t engaged in 62 days.
+              Your L2C health score is <strong>72/100</strong>. Revenue velocity is slowing — $187K in pipeline but only $48K collected last 30 days.
+              You have <strong>$4,200 in unbilled scope changes</strong> and <strong>$14K overdue AR</strong>. Three actions can improve your cash position by $18K.
             </p>
             <div className="flex gap-2 mt-3">
               <button className="text-[12px] font-medium px-3 py-1.5 rounded-md ii-gradient text-white hover:opacity-90">View Full Analysis</button>
@@ -273,13 +280,19 @@ function Scene9_L2CFunnel() {
         </div>
       </div>
 
-      <div className="grid grid-cols-4 gap-4">
-        <MetricCard label="E2E Conversion" value="3.6%" subtitle="Campaign → Cash" />
-        <MetricCard label="Best Path" value="11.2%" subtitle="Meta→Video→Premium" change="3.1x avg" changeType="positive" />
-        <MetricCard label="Top Client LTV" value="$112K" subtitle="The Andersons" />
-        <MetricCard label="Churn Risk" value="Moderate" subtitle="Rising — 62d inactive" change="Act now" changeType="negative" />
+      {/* L2C Health Score */}
+      <L2CHealthScore />
+
+      {/* Revenue Velocity + Cash Conversion side by side */}
+      <div className="grid grid-cols-2 gap-4">
+        <RevenueVelocity />
+        <CashConversion />
       </div>
 
+      {/* AI-First Stage Explorer */}
+      <StageExplorer onPromptClick={openIntelligencePanel} />
+
+      {/* E2E Funnel */}
       <div className="qbo-card p-5">
         <h3 className="text-[13px] font-semibold text-[#0D333F] mb-4">L2C Funnel — Campaign to Cash Collected</h3>
         <FunnelChart
@@ -298,50 +311,35 @@ function Scene9_L2CFunnel() {
         </div>
       </div>
 
+      {/* Customer Health + Working Capital */}
       <div className="grid grid-cols-2 gap-4">
-        <div className="qbo-card p-5">
-          <h3 className="text-[13px] font-semibold text-[#0D333F] mb-3">Customer Profile — The Andersons</h3>
-          <div className="grid grid-cols-3 gap-3 mb-3">
-            <div><p className="text-[10px] text-[#8C8C8C] uppercase">Revenue</p><p className="text-lg font-bold text-[#0D333F]">$67K</p></div>
-            <div><p className="text-[10px] text-[#8C8C8C] uppercase">Predicted LTV</p><p className="text-lg font-bold ii-text">$112K</p></div>
-            <div><p className="text-[10px] text-[#8C8C8C] uppercase">Engagement</p><p className="text-lg font-bold text-[#E17000]">Declining</p></div>
-          </div>
-          <LineChart data={[{ label: "Aug", value: 12 }, { label: "Sep", value: 10 }, { label: "Oct", value: 8 }, { label: "Nov", value: 5 }, { label: "Dec", value: 3 }, { label: "Jan", value: 1 }]} color="#E17000" height={100} />
-          <ProgressBar value={65} color="#E17000" label="Churn Risk" />
-        </div>
-        <div className="qbo-card p-5">
-          <h3 className="text-[13px] font-semibold text-[#0D333F] mb-3">Weekly Report Builder</h3>
-          <div className="grid grid-cols-2 gap-2">
-            {[
-              { label: "Pipeline Forecast", value: "$62K" },
-              { label: "Funnel Conv Rate", value: "3.6%" },
-              { label: "DSO Trend", value: "27 days" },
-              { label: "Avg Margin", value: "18%" },
-            ].map((m) => (
-              <div key={m.label} className="p-2.5 bg-[#F4F4EF] rounded-lg">
-                <p className="text-sm font-bold text-[#0D333F]">{m.value}</p>
-                <p className="text-[9px] text-[#8C8C8C]">{m.label}</p>
-              </div>
-            ))}
-          </div>
-          <div className="flex gap-2 mt-3">
-            <button className="text-[12px] px-3 py-1.5 bg-[#055393] text-white rounded-md font-medium">Schedule</button>
-            <button className="text-[12px] px-3 py-1.5 border border-[#BABEC5] rounded-md font-medium text-[#0D333F]">Export PDF</button>
-          </div>
-        </div>
+        <CustomerHealth />
+        <WorkingCapital />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
-        <IntuitAssistCard
-          title="Intuit Intelligence · Pathfinder"
-          message={`Highest-converting path: Meta ad → web form → video meeting within 48h → Premium proposal → signed in 4 days. This path converts at 11.2% vs 3.6% average.\n\n➡ Build this into your default workflow.`}
-          actions={[{ label: "Build Workflow", primary: true }]}
-        />
-        <IntuitAssistCard
-          title="Intuit Intelligence · Customer Intelligence"
-          message={`The Andersons (top-5 by LTV: $112K) haven't engaged in 62 days. Their re-engagement cycle is 90 days. Seasonal pattern suggests outdoor project.\n\n➡ Reach out this week before the window closes.`}
-          actions={[{ label: "Send Outreach", primary: true }]}
-        />
+      {/* Revenue Leakage */}
+      <RevenueLeakage />
+
+      {/* Weekly Report Builder */}
+      <div className="qbo-card p-5">
+        <h3 className="text-[13px] font-semibold text-[#0D333F] mb-3">Weekly Report Builder</h3>
+        <div className="grid grid-cols-4 gap-3">
+          {[
+            { label: "Pipeline Forecast", value: "$62K" },
+            { label: "Funnel Conv Rate", value: "3.6%" },
+            { label: "DSO Trend", value: "27 days" },
+            { label: "Avg Margin", value: "18%" },
+          ].map((m) => (
+            <div key={m.label} className="p-3 bg-[#F4F4EF] rounded-lg text-center">
+              <p className="text-[16px] font-bold text-[#0D333F]">{m.value}</p>
+              <p className="text-[10px] text-[#8C8C8C]">{m.label}</p>
+            </div>
+          ))}
+        </div>
+        <div className="flex gap-2 mt-4">
+          <button className="text-[12px] px-4 py-2 bg-[#055393] text-white rounded-md font-medium">Schedule Weekly Report</button>
+          <button className="text-[12px] px-4 py-2 border border-[#BABEC5] rounded-md font-medium text-[#0D333F]">Export PDF</button>
+        </div>
       </div>
     </div>
   );
