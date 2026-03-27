@@ -1,7 +1,12 @@
 self.__BUILD_MANIFEST = {
   "__rewrites": {
     "afterFiles": [],
-    "beforeFiles": [],
+    "beforeFiles": [
+      {
+        "source": "/l2c-analytics-prototype//_next/:path+",
+        "destination": "/l2c-analytics-prototype/_next/:path+"
+      }
+    ],
     "fallback": []
   },
   "sortedPages": [
