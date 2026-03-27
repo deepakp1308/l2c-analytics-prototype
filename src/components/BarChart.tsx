@@ -3,7 +3,7 @@
 export function BarChart({
   data,
   height = 200,
-  barColor = "#055393",
+  barColor = "#0B7F5C",
   showValues = true,
 }: {
   data: { label: string; value: number; color?: string }[];
@@ -23,13 +23,13 @@ export function BarChart({
         return (
           <div key={i} className="flex flex-col items-center gap-1 flex-1">
             {showValues && (
-              <span className="text-[11px] font-semibold text-[#0D333F]">{displayVal}</span>
+              <span className="text-[11px] font-semibold text-[#22262A]">{displayVal}</span>
             )}
             <div
               className="w-full max-w-[44px] rounded-t-[4px] transition-all duration-300"
               style={{ height: barH, backgroundColor: d.color || barColor }}
             />
-            <span className="text-[10px] text-[#8C8C8C] text-center leading-tight mt-1 max-w-[56px]">
+            <span className="text-[10px] text-[#9CA3AF] text-center leading-tight mt-1 max-w-[56px]">
               {d.label}
             </span>
           </div>

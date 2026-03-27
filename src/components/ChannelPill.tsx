@@ -10,8 +10,8 @@ export function ChannelPill({ channelKey, name, color, active, onClick }: {
       className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[12px] font-medium border transition-all shrink-0"
       style={{
         backgroundColor: active ? color + "12" : "#FFFFFF",
-        borderColor: active ? color : "#D9D9D9",
-        color: active ? color : "#8C8C8C",
+        borderColor: active ? color : "#E5E7EB",
+        color: active ? color : "#9CA3AF",
       }}
     >
       <ChannelLogo channel={channelKey} size={16} />

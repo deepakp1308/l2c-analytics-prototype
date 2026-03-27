@@ -12,24 +12,24 @@ export function CustomerHealth() {
   return (
     <div className="qbo-card p-5">
       <div className="flex items-center justify-between mb-3">
-        <h3 className="text-[13px] font-semibold text-[#0D333F]">Customer Health — Top 5 by LTV</h3>
+        <h3 className="text-[13px] font-semibold text-[#22262A]">Customer Health — Top 5 by LTV</h3>
       </div>
 
       <div className="space-y-2">
         {CUSTOMERS.map((c, i) => (
-          <div key={c.name} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg ${c.health === "warning" ? "bg-[#FFF7ED] border border-[#E17000]/15" : "bg-[#F4F4EF]"}`}>
-            <span className="text-[12px] font-bold text-[#8C8C8C] w-5 shrink-0">#{i + 1}</span>
+          <div key={c.name} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg ${c.health === "warning" ? "bg-[#FFF7ED] border border-[#E17000]/15" : "bg-[#F3F4F6]"}`}>
+            <span className="text-[12px] font-bold text-[#9CA3AF] w-5 shrink-0">#{i + 1}</span>
             <div className="flex-1 min-w-0">
-              <p className="text-[12px] font-semibold text-[#0D333F] truncate">{c.name}</p>
-              <p className="text-[10px] text-[#8C8C8C]">{c.label}</p>
+              <p className="text-[12px] font-semibold text-[#22262A] truncate">{c.name}</p>
+              <p className="text-[10px] text-[#9CA3AF]">{c.label}</p>
             </div>
             <div className="text-right shrink-0">
-              <p className="text-[13px] font-bold text-[#0D333F]">{c.ltv}</p>
-              <p className="text-[10px] text-[#8C8C8C]">LTV</p>
+              <p className="text-[13px] font-bold text-[#22262A]">{c.ltv}</p>
+              <p className="text-[10px] text-[#9CA3AF]">LTV</p>
             </div>
             <div className="text-right shrink-0 w-[50px]">
-              <p className="text-[12px] font-semibold text-[#6B6C72]">{c.revenue}</p>
-              <p className="text-[10px] text-[#8C8C8C]">Revenue</p>
+              <p className="text-[12px] font-semibold text-[#6B7280]">{c.revenue}</p>
+              <p className="text-[10px] text-[#9CA3AF]">Revenue</p>
             </div>
             <div className="shrink-0">
               {c.health === "warning" ? (

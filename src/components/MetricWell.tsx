@@ -15,11 +15,11 @@ export function MetricWell({ title, metricSets, activeSet, onSetChange }: {
   return (
     <div>
       <div className="flex items-center justify-between mb-3">
-        <h4 className="text-[12px] font-semibold text-[#6B6C72] uppercase tracking-wider">{title}</h4>
+        <h4 className="text-[12px] font-semibold text-[#6B7280] uppercase tracking-wider">{title}</h4>
         <select
           value={activeSet}
           onChange={(e) => onSetChange(Number(e.target.value))}
-          className="text-[11px] border border-[#D9D9D9] rounded px-2 py-1 bg-white text-[#6B6C72]"
+          className="text-[11px] border border-[#E5E7EB] rounded px-2 py-1 bg-white text-[#6B7280]"
         >
           {metricSets.map((s, i) => (
             <option key={i} value={i}>{s.label}</option>

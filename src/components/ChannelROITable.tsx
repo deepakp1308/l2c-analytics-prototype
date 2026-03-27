@@ -24,28 +24,28 @@ const DATA: Row[] = [
 
 export function ChannelROITable() {
   return (
-    <div className="overflow-x-auto rounded-lg border border-[#D9D9D9]">
+    <div className="overflow-x-auto rounded-lg border border-[#E5E7EB]">
       <table className="w-full text-sm">
         <thead>
-          <tr className="bg-[#F4F4EF] border-b border-[#D9D9D9]">
+          <tr className="bg-[#F3F4F6] border-b border-[#E5E7EB]">
             {["Channel", "Conversions", "Revenue", "Cost", "Time to Convert", "ROI"].map(h => (
-              <th key={h} className="text-left px-4 py-2.5 text-[10px] font-semibold text-[#8C8C8C] uppercase tracking-wider">{h}</th>
+              <th key={h} className="text-left px-4 py-2.5 text-[10px] font-semibold text-[#9CA3AF] uppercase tracking-wider">{h}</th>
             ))}
           </tr>
         </thead>
         <tbody>
           {DATA.map(row => (
-            <tr key={row.channelKey} className="border-b border-[#E8E8E8] last:border-0 hover:bg-[#F4F4EF] transition-colors">
+            <tr key={row.channelKey} className="border-b border-[#E5E7EB] last:border-0 hover:bg-[#F3F4F6] transition-colors">
               <td className="px-4 py-3">
                 <div className="flex items-center gap-2.5">
                   <ChannelLogo channel={row.channelKey} size={24} />
-                  <span className="text-[13px] font-medium text-[#0D333F]">{row.channelName}</span>
+                  <span className="text-[13px] font-medium text-[#22262A]">{row.channelName}</span>
                 </div>
               </td>
-              <td className="px-4 py-3 text-[13px] text-[#0D333F]">{row.conversions}</td>
-              <td className="px-4 py-3 text-[13px] font-semibold text-[#0D333F]">{row.revenue}</td>
-              <td className="px-4 py-3 text-[13px] text-[#6B6C72]">{row.cost}</td>
-              <td className="px-4 py-3 text-[13px] text-[#6B6C72]">{row.timeToConvert}</td>
+              <td className="px-4 py-3 text-[13px] text-[#22262A]">{row.conversions}</td>
+              <td className="px-4 py-3 text-[13px] font-semibold text-[#22262A]">{row.revenue}</td>
+              <td className="px-4 py-3 text-[13px] text-[#6B7280]">{row.cost}</td>
+              <td className="px-4 py-3 text-[13px] text-[#6B7280]">{row.timeToConvert}</td>
               <td className="px-4 py-3">
                 <span className={`text-[13px] font-bold ${row.roiPositive ? "text-[#108000]" : "text-[#D52B1E]"}`}>
                   {row.roiPositive ? "▲" : "▼"} {row.roi}

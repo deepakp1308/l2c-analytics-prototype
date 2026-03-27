@@ -35,7 +35,7 @@ export function TimeSeriesChart({ activeChannels, onToggleChannel }: {
 
   return (
     <div className="qbo-card p-5">
-      <h3 className="text-[13px] font-semibold text-[#0D333F] mb-3">Campaign Performance Over Time</h3>
+      <h3 className="text-[13px] font-semibold text-[#22262A] mb-3">Campaign Performance Over Time</h3>
 
       {/* Channel pills */}
       <div className="flex flex-wrap gap-2 mb-4">
@@ -56,8 +56,8 @@ export function TimeSeriesChart({ activeChannels, onToggleChannel }: {
         {/* Grid lines */}
         {[0, 0.25, 0.5, 0.75, 1].map(pct => (
           <g key={pct}>
-            <line x1={padX} y1={padY + pct * chartH} x2={padX + chartW} y2={padY + pct * chartH} stroke="#E8E8E8" strokeWidth="0.5" />
-            <text x={padX - 6} y={padY + pct * chartH + 3} textAnchor="end" fontSize="9" fill="#8C8C8C">
+            <line x1={padX} y1={padY + pct * chartH} x2={padX + chartW} y2={padY + pct * chartH} stroke="#E5E7EB" strokeWidth="0.5" />
+            <text x={padX - 6} y={padY + pct * chartH + 3} textAnchor="end" fontSize="9" fill="#9CA3AF">
               {Math.round(globalMax * (1 - pct))}
             </text>
           </g>
@@ -86,7 +86,7 @@ export function TimeSeriesChart({ activeChannels, onToggleChannel }: {
 
         {/* X-axis labels */}
         {TIME_LABELS.map((label, i) => (
-          <text key={i} x={toX(i)} y={svgH - 6} textAnchor="middle" fontSize="9" fill="#8C8C8C">{label}</text>
+          <text key={i} x={toX(i)} y={svgH - 6} textAnchor="middle" fontSize="9" fill="#9CA3AF">{label}</text>
         ))}
       </svg>
     </div>

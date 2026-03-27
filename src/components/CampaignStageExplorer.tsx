@@ -11,84 +11,69 @@ type StageCard = {
 
 const STAGES: StageCard[] = [
   {
-    stage: "Attract",
+    stage: "Reach",
     icon: "📣",
     color: "#0B7F5C",
     lightBg: "#E6F5F0",
-    headline: "Campaign & Acquisition",
+    headline: "Audience & Impressions",
     prompts: [
-      "Which campaign should I invest more in this month?",
-      "What's my true cost to acquire a paying customer?",
-      "Are my ads attracting the right customer profile?",
+      "Which channel reaches the most qualified audience?",
+      "Am I wasting spend on impressions that never convert?",
+      "How does my reach compare to competitors in my area?",
     ],
   },
   {
-    stage: "Convert",
+    stage: "Engagement",
     icon: "🎯",
     color: "#60A5FA",
     lightBg: "#E6F5F0",
-    headline: "Lead Qualification & Nurture",
+    headline: "Clicks & Interactions",
     prompts: [
-      "Which leads should I call first today?",
-      "Why are qualified leads not converting to proposals?",
-      "What proposal format closes fastest for my price range?",
+      "What content type gets the highest engagement by channel?",
+      "Which automated flows have the best open/click rates?",
+      "Are my WhatsApp campaigns outperforming email?",
     ],
   },
   {
-    stage: "Close",
-    icon: "🤝",
-    color: "#108000",
-    lightBg: "#F0FAF0",
-    headline: "Deal Closing & Signing",
-    prompts: [
-      "Which deals are at risk of stalling this week?",
-      "How do I close the $13K gap to hit my quarterly target?",
-      "What's the fastest way to get Henderson to sign?",
-    ],
-  },
-  {
-    stage: "Collect",
+    stage: "Conversion",
     icon: "💰",
     color: "#E17000",
     lightBg: "#FFF7ED",
-    headline: "Invoicing & Payment",
+    headline: "Leads & Deals",
     prompts: [
-      "Who owes me money and how do I get paid faster?",
-      "What payment method should I default to save time?",
-      "How much cash will I have in 30 days?",
+      "Which campaign converts fastest from click to signed deal?",
+      "What's the revenue per email sent vs per ad click?",
+      "Show me conversion path for my highest-value deals",
     ],
   },
   {
-    stage: "Grow",
-    icon: "📈",
-    color: "#3CBFA4",
-    lightBg: "#E6F5F0",
-    headline: "Retention & Expansion",
+    stage: "Profitability",
+    icon: "📊",
+    color: "#108000",
+    lightBg: "#F0FAF0",
+    headline: "Net Profit & ROI",
     prompts: [
-      "Which customers are about to churn?",
-      "Who's ready for an upsell based on project history?",
-      "What's my most profitable customer type?",
+      "Which campaign is most profitable after all costs?",
+      "Should I kill SMS and move budget to WhatsApp?",
+      "What's my break-even point for Google Ads this quarter?",
     ],
   },
 ];
 
-export function StageExplorer({ onPromptClick }: { onPromptClick: (q: string) => void }) {
+export function CampaignStageExplorer({ onPromptClick }: { onPromptClick: (q: string) => void }) {
   return (
     <div className="qbo-card p-5">
       <div className="flex items-center gap-2 mb-4">
         <div className="w-6 h-6 rounded-md ii-gradient flex items-center justify-center">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="white">
-            <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
-          </svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" /></svg>
         </div>
-        <h3 className="text-[13px] font-semibold text-[#22262A]">Explore by L2C Stage</h3>
+        <h3 className="text-[13px] font-semibold text-[#22262A]">Explore by Campaign Stage</h3>
         <span className="text-[10px] text-[#9CA3AF] ml-auto">Click any question to explore with Intuit Intelligence</span>
       </div>
 
-      <div className="grid grid-cols-5 gap-3">
+      <div className="grid grid-cols-4 gap-3">
         {STAGES.map((s) => (
           <div key={s.stage} className="rounded-lg border border-[#E5E7EB] overflow-hidden hover:shadow-sm transition-shadow">
-            {/* Stage header */}
             <div className="px-3 py-2.5 flex items-center gap-2" style={{ backgroundColor: s.lightBg }}>
               <span className="text-[16px]">{s.icon}</span>
               <div>
@@ -96,8 +81,6 @@ export function StageExplorer({ onPromptClick }: { onPromptClick: (q: string) =>
                 <p className="text-[9px] text-[#9CA3AF] leading-tight">{s.headline}</p>
               </div>
             </div>
-
-            {/* Prompt list */}
             <div className="p-2 space-y-1">
               {s.prompts.map((prompt) => (
                 <button

@@ -4,8 +4,8 @@ type Stage = { label: string; value: string; count: number; color: string; dropo
 
 const STAGES: Stage[] = [
   { label: "Ad Impressions", value: "2,840", count: 2840, color: "#93C5FD", dropoff: "" },
-  { label: "Ad Clicks", value: "312", count: 312, color: "#055393", dropoff: "11.0%" },
-  { label: "Leads", value: "84", count: 84, color: "#4A90D9", dropoff: "26.9%" },
+  { label: "Ad Clicks", value: "312", count: 312, color: "#0B7F5C", dropoff: "11.0%" },
+  { label: "Leads", value: "84", count: 84, color: "#60A5FA", dropoff: "26.9%" },
   { label: "Proposals", value: "22", count: 22, color: "#108000", dropoff: "26.2%" },
   { label: "Signed", value: "14", count: 14, color: "#0D6B3F", dropoff: "63.6%" },
   { label: "Invoiced", value: "12", count: 12, color: "#E17000", dropoff: "85.7%" },
@@ -29,7 +29,7 @@ export function AttributionFunnel() {
               <div className="flex items-center gap-0">
                 {/* Left label */}
                 <div className="w-[100px] text-right pr-3 shrink-0">
-                  <p className="text-[11px] font-medium text-[#0D333F]">{stage.label}</p>
+                  <p className="text-[11px] font-medium text-[#22262A]">{stage.label}</p>
                 </div>
 
                 {/* Funnel bar */}
@@ -79,20 +79,20 @@ export function AttributionFunnel() {
       </div>
 
       {/* Bottom summary strip */}
-      <div className="flex items-center justify-between mt-4 pt-3 border-t border-[#E8E8E8]">
+      <div className="flex items-center justify-between mt-4 pt-3 border-t border-[#E5E7EB]">
         <div className="flex items-center gap-4">
           <div>
-            <p className="text-[10px] text-[#8C8C8C] uppercase">End-to-End</p>
-            <p className="text-[16px] font-bold text-[#0D333F]">3.6%</p>
+            <p className="text-[10px] text-[#9CA3AF] uppercase">End-to-End</p>
+            <p className="text-[16px] font-bold text-[#22262A]">3.6%</p>
           </div>
-          <div className="w-px h-8 bg-[#E8E8E8]" />
+          <div className="w-px h-8 bg-[#E5E7EB]" />
           <div>
-            <p className="text-[10px] text-[#8C8C8C] uppercase">Avg Cycle</p>
-            <p className="text-[16px] font-bold text-[#0D333F]">34 days</p>
+            <p className="text-[10px] text-[#9CA3AF] uppercase">Avg Cycle</p>
+            <p className="text-[16px] font-bold text-[#22262A]">34 days</p>
           </div>
-          <div className="w-px h-8 bg-[#E8E8E8]" />
+          <div className="w-px h-8 bg-[#E5E7EB]" />
           <div>
-            <p className="text-[10px] text-[#8C8C8C] uppercase">Cash Collected</p>
+            <p className="text-[10px] text-[#9CA3AF] uppercase">Cash Collected</p>
             <p className="text-[16px] font-bold text-[#108000]">$128,600</p>
           </div>
         </div>

@@ -16,8 +16,8 @@ export function RevenueLeakage() {
             <span className="text-[12px]">🔍</span>
           </div>
           <div>
-            <h3 className="text-[13px] font-semibold text-[#0D333F]">Revenue Leakage Detected</h3>
-            <p className="text-[10px] text-[#8C8C8C]">Unbilled scope changes found in active projects</p>
+            <h3 className="text-[13px] font-semibold text-[#22262A]">Revenue Leakage Detected</h3>
+            <p className="text-[10px] text-[#9CA3AF]">Unbilled scope changes found in active projects</p>
           </div>
         </div>
         <span className="text-[18px] font-bold text-[#D52B1E]">{TOTAL}</span>
@@ -27,12 +27,12 @@ export function RevenueLeakage() {
         {LEAKS.map((leak) => (
           <div key={leak.item} className={`flex items-center justify-between px-3 py-2.5 rounded-lg ${leak.severity === "high" ? "bg-[#FEF2F2]" : "bg-[#FFF7ED]"}`}>
             <div>
-              <p className="text-[12px] font-medium text-[#0D333F]">{leak.project}</p>
-              <p className="text-[10px] text-[#6B6C72]">{leak.item}</p>
+              <p className="text-[12px] font-medium text-[#22262A]">{leak.project}</p>
+              <p className="text-[10px] text-[#6B7280]">{leak.item}</p>
             </div>
             <div className="flex items-center gap-3">
               <span className="text-[13px] font-bold text-[#D52B1E]">{leak.amount}</span>
-              <button className="text-[11px] font-medium px-2.5 py-1 rounded-md bg-[#055393] text-white hover:bg-[#044578] transition-colors">
+              <button className="text-[11px] font-medium px-2.5 py-1 rounded-md bg-[#0B7F5C] text-white hover:bg-[#096B4D] transition-colors">
                 Issue CO →
               </button>
             </div>

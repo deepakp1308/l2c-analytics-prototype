@@ -9,8 +9,8 @@ export function StatusBadge({
     success: "bg-[#F0FAF0] text-[#108000]",
     warning: "bg-[#FFF7ED] text-[#E17000]",
     danger: "bg-[#FEF2F2] text-[#D52B1E]",
-    info: "bg-[#EAF6F7] text-[#055393]",
-    default: "bg-[#F4F4EF] text-[#6B6C72]",
+    info: "bg-[#E6F5F0] text-[#0B7F5C]",
+    default: "bg-[#F3F4F6] text-[#6B7280]",
   };
 
   return (

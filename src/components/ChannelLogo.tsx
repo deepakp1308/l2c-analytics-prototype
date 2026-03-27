@@ -1,7 +1,7 @@
 "use client";
 
 const channels: Record<string, { color: string; initial: string }> = {
-  email:     { color: "#055393", initial: "E" },
+  email:     { color: "#0B7F5C", initial: "E" },
   sms:       { color: "#108000", initial: "S" },
   whatsapp:  { color: "#25D366", initial: "W" },
   googleAds: { color: "#EA4335", initial: "G" },
@@ -11,7 +11,7 @@ const channels: Record<string, { color: string; initial: string }> = {
 };
 
 export function ChannelLogo({ channel, size = 20 }: { channel: string; size?: number }) {
-  const cfg = channels[channel] || { color: "#8C8C8C", initial: "?" };
+  const cfg = channels[channel] || { color: "#9CA3AF", initial: "?" };
   const fontSize = Math.round(size * 0.48);
 
   return (
@@ -25,7 +25,7 @@ export function ChannelLogo({ channel, size = 20 }: { channel: string; size?: nu
 }
 
 export const CHANNEL_CONFIG = [
-  { key: "email",     name: "Email",      color: "#055393" },
+  { key: "email",     name: "Email",      color: "#0B7F5C" },
   { key: "sms",       name: "SMS",        color: "#108000" },
   { key: "whatsapp",  name: "WhatsApp",   color: "#25D366" },
   { key: "googleAds", name: "Google Ads", color: "#EA4335" },

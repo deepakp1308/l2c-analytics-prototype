@@ -11,68 +11,56 @@ type StageCard = {
 
 const STAGES: StageCard[] = [
   {
-    stage: "Attract",
+    stage: "Ad Spend",
     icon: "📣",
     color: "#0B7F5C",
     lightBg: "#E6F5F0",
-    headline: "Campaign & Acquisition",
+    headline: "Budget & Allocation",
     prompts: [
-      "Which campaign should I invest more in this month?",
-      "What's my true cost to acquire a paying customer?",
-      "Are my ads attracting the right customer profile?",
+      "Am I overspending on any channel relative to returns?",
+      "What's the optimal budget split across my channels?",
+      "How does my CPL compare to industry benchmarks?",
     ],
   },
   {
-    stage: "Convert",
+    stage: "Conversion",
     icon: "🎯",
     color: "#60A5FA",
     lightBg: "#E6F5F0",
-    headline: "Lead Qualification & Nurture",
+    headline: "Attribution & Paths",
     prompts: [
-      "Which leads should I call first today?",
-      "Why are qualified leads not converting to proposals?",
-      "What proposal format closes fastest for my price range?",
+      "Which channel produces the most profitable customers long-term?",
+      "Show me the cross-channel journey for my best deals",
+      "What's the conversion lag between ad click and first purchase?",
     ],
   },
   {
-    stage: "Close",
-    icon: "🤝",
-    color: "#108000",
-    lightBg: "#F0FAF0",
-    headline: "Deal Closing & Signing",
-    prompts: [
-      "Which deals are at risk of stalling this week?",
-      "How do I close the $13K gap to hit my quarterly target?",
-      "What's the fastest way to get Henderson to sign?",
-    ],
-  },
-  {
-    stage: "Collect",
+    stage: "Cash Impact",
     icon: "💰",
     color: "#E17000",
     lightBg: "#FFF7ED",
-    headline: "Invoicing & Payment",
+    headline: "Revenue & Collection",
     prompts: [
-      "Who owes me money and how do I get paid faster?",
-      "What payment method should I default to save time?",
-      "How much cash will I have in 30 days?",
+      "Which channel gets me paid fastest after signing?",
+      "What's my true CAC including sales and proposal costs?",
+      "How much revenue leaks between invoice and collection by channel?",
     ],
   },
   {
-    stage: "Grow",
+    stage: "LTV & Quality",
     icon: "📈",
-    color: "#3CBFA4",
-    lightBg: "#E6F5F0",
-    headline: "Retention & Expansion",
+    color: "#108000",
+    lightBg: "#F0FAF0",
+    headline: "Retention & Value",
     prompts: [
-      "Which customers are about to churn?",
-      "Who's ready for an upsell based on project history?",
-      "What's my most profitable customer type?",
+      "Which ad channel has the best 2-year customer retention?",
+      "Do higher-CPL channels actually produce better clients?",
+      "Which channel's customers have the fewest payment disputes?",
     ],
   },
 ];
 
-export function StageExplorer({ onPromptClick }: { onPromptClick: (q: string) => void }) {
+export function AttributionStageExplorer({ onPromptClick }: { onPromptClick: (q: string) => void }) {
   return (
     <div className="qbo-card p-5">
       <div className="flex items-center gap-2 mb-4">
@@ -81,14 +69,13 @@ export function StageExplorer({ onPromptClick }: { onPromptClick: (q: string) =>
             <path d="M12 2L14.5 9.5L22 12L14.5 14.5L12 22L9.5 14.5L2 12L9.5 9.5L12 2Z" />
           </svg>
         </div>
-        <h3 className="text-[13px] font-semibold text-[#22262A]">Explore by L2C Stage</h3>
+        <h3 className="text-[13px] font-semibold text-[#22262A]">Explore by Attribution Stage</h3>
         <span className="text-[10px] text-[#9CA3AF] ml-auto">Click any question to explore with Intuit Intelligence</span>
       </div>
 
-      <div className="grid grid-cols-5 gap-3">
+      <div className="grid grid-cols-4 gap-3">
         {STAGES.map((s) => (
           <div key={s.stage} className="rounded-lg border border-[#E5E7EB] overflow-hidden hover:shadow-sm transition-shadow">
-            {/* Stage header */}
             <div className="px-3 py-2.5 flex items-center gap-2" style={{ backgroundColor: s.lightBg }}>
               <span className="text-[16px]">{s.icon}</span>
               <div>
@@ -96,8 +83,6 @@ export function StageExplorer({ onPromptClick }: { onPromptClick: (q: string) =>
                 <p className="text-[9px] text-[#9CA3AF] leading-tight">{s.headline}</p>
               </div>
             </div>
-
-            {/* Prompt list */}
             <div className="p-2 space-y-1">
               {s.prompts.map((prompt) => (
                 <button

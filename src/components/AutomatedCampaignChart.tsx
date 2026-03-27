@@ -3,7 +3,7 @@ import { ChannelLogo } from "./ChannelLogo";
 
 const PERIODS = ["Week 1", "Week 2", "Week 3", "Week 4"];
 const CHANNELS = [
-  { key: "email", name: "Email", color: "#055393" },
+  { key: "email", name: "Email", color: "#0B7F5C" },
   { key: "sms", name: "SMS", color: "#108000" },
   { key: "whatsapp", name: "WhatsApp", color: "#25D366" },
 ];
@@ -46,7 +46,7 @@ export function AutomatedCampaignChart({ activeMetric, onMetricChange }: {
   return (
     <div className="qbo-card p-5">
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-[13px] font-semibold text-[#0D333F]">Automated Campaign Performance</h3>
+        <h3 className="text-[13px] font-semibold text-[#22262A]">Automated Campaign Performance</h3>
         <div className="flex gap-1 bg-[#ECEEF2] rounded-lg p-0.5">
           {TABS.map(t => (
             <button
@@ -65,8 +65,8 @@ export function AutomatedCampaignChart({ activeMetric, onMetricChange }: {
         {/* Grid */}
         {[0, 0.25, 0.5, 0.75, 1].map(pct => (
           <g key={pct}>
-            <line x1={padX} y1={padY + pct * chartH} x2={padX + chartW} y2={padY + pct * chartH} stroke="#E8E8E8" strokeWidth="0.5" />
-            <text x={padX - 6} y={padY + pct * chartH + 3} textAnchor="end" fontSize="8" fill="#8C8C8C">
+            <line x1={padX} y1={padY + pct * chartH} x2={padX + chartW} y2={padY + pct * chartH} stroke="#E5E7EB" strokeWidth="0.5" />
+            <text x={padX - 6} y={padY + pct * chartH + 3} textAnchor="end" fontSize="8" fill="#9CA3AF">
               {activeMetric === "sendVolume"
                 ? Math.round(maxVal * (1 - pct)).toLocaleString()
                 : (maxVal * (1 - pct)).toFixed(0) + "%"}
@@ -97,18 +97,18 @@ export function AutomatedCampaignChart({ activeMetric, onMetricChange }: {
 
         {/* X labels */}
         {PERIODS.map((label, i) => (
-          <text key={i} x={padX + i * groupW + groupW / 2} y={svgH - 8} textAnchor="middle" fontSize="9" fill="#8C8C8C">{label}</text>
+          <text key={i} x={padX + i * groupW + groupW / 2} y={svgH - 8} textAnchor="middle" fontSize="9" fill="#9CA3AF">{label}</text>
         ))}
       </svg>
 
       {/* Legend + summary cards */}
       <div className="grid grid-cols-3 gap-3 mt-3">
         {CHANNELS.map(ch => (
-          <div key={ch.key} className="flex items-center gap-2.5 p-3 bg-[#F4F4EF] rounded-lg">
+          <div key={ch.key} className="flex items-center gap-2.5 p-3 bg-[#F3F4F6] rounded-lg">
             <ChannelLogo channel={ch.key} size={24} />
             <div>
-              <p className="text-[12px] font-semibold text-[#0D333F]">{ch.name}</p>
-              <p className="text-[11px] text-[#6B6C72]">{summaries[ch.key]}</p>
+              <p className="text-[12px] font-semibold text-[#22262A]">{ch.name}</p>
+              <p className="text-[11px] text-[#6B7280]">{summaries[ch.key]}</p>
             </div>
           </div>
         ))}
